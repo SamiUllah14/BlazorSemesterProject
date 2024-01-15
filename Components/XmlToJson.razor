@@ -1,0 +1,123 @@
+﻿@page "/xml"
+@using System.Xml.Linq;
+@using System.Text;
+
+<div class="container mt-5">
+    <h3 class="text-center mb-4">XML to JSON Converter</h3>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="mb-3">
+                <label for="xmlInput" class="form-label">Enter XML:</label>
+                <textarea id="xmlInput" @bind="xmlInput" class="form-control" rows="10" placeholder="Enter XML here"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <button @onclick="ConvertToJSON" class="btn btn-primary">Convert to JSON</button>
+            </div>
+
+            @if (!string.IsNullOrEmpty(jsonOutput))
+            {
+                <div>
+                    <h4>JSON Output:</h4>
+                    <pre>@jsonOutput</pre>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    private string xmlInput = "";
+    private string jsonOutput = "";
+
+    private void ConvertToJSON()
+    {
+        try
+        {
+            var xmlDoc = XDocument.Parse(xmlInput);
+            jsonOutput = ConvertXmlToJson(xmlDoc);
+        }
+        catch (Exception ex)
+        {
+            jsonOutput = $"Error converting XML to JSON: {ex.Message}";
+        }
+    }
+
+    private string ConvertXmlToJson(XDocument xmlDoc)
+    {
+        var jsonElement = new JsonConverter().ConvertXmlToJson(xmlDoc.Root);
+        return jsonElement.ToString();
+    }
+
+    public class JsonConverter
+    {
+        public JsonElement ConvertXmlToJson(XElement element)
+        {
+            var json = new JsonObject();
+
+            foreach (var child in element.Elements())
+            {
+                if (child.HasElements)
+                {
+                    json.Add(child.Name.LocalName, ConvertXmlToJson(child));
+                }
+                else
+                {
+                    json.Add(child.Name.LocalName, new JsonValue(child.Value));
+                }
+            }
+
+            return json;
+        }
+    }
+
+    public class JsonObject : JsonElement
+    {
+        private readonly Dictionary<string, JsonElement> properties = new Dictionary<string, JsonElement>();
+
+        public void Add(string key, JsonElement value)
+        {
+            properties[key] = value;
+        }
+
+        public override string ToString()
+        {
+            var builder = new StringBuilder();
+            builder.Append("{ ");
+
+            foreach (var property in properties)
+            {
+                builder.Append($"\"{property.Key}\": {property.Value}, ");
+            }
+
+            if (properties.Count > 0)
+            {
+                builder.Remove(builder.Length - 2, 2); 
+            }
+
+            builder.Append(" }");
+            return builder.ToString();
+        }
+    }
+
+    public class JsonValue : JsonElement
+    {
+        private readonly string value;
+
+        public JsonValue(string value)
+        {
+            this.value = value;
+        }
+
+        public override string ToString()
+        {
+            return $"\"{value}\"";
+        }
+    }
+
+    public abstract class JsonElement
+    {
+        // Define common methods and properties for JSON elements
+    }
+}

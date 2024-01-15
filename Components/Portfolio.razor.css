@@ -1,0 +1,29 @@
+﻿.animated-button {
+    position: relative;
+    overflow: hidden;
+    transform: translate3d(0, 0, 0);
+    transition: background 0.3s;
+}
+
+.animated-button:hover:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 100%;
+    top: 0;
+    bottom: 0;
+    background: linear-gradient(to right, transparent, #3498db);
+    transition: right 0.3s;
+}
+
+.animated-button:hover {
+    color: #fff !important;
+    background: #3498db !important;
+}
+
+
+.textSHaredform {
+    display: flex;
+    justify-content: center;
+}

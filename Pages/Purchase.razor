@@ -1,0 +1,98 @@
+﻿@page "/purchase"
+@inject NavigationManager Navigation
+
+<AuthorizeView>
+    <Authorized>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <h1 class="text-center">Unlock Exclusive Features</h1>
+
+                    <!-- Premium Card -->
+                    <div class="card mb-3" style="max-width: 60rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Premium Membership</h5>
+                            <p class="card-text">Access all tools for just $15</p>
+                            <div>
+                                <label for="inputValue">Enter $15:</label>
+                                <br />
+                                <b><p>@comment</p></b>
+                                <input id="inputValue" @bind="userInput" />
+                            </div>
+
+                            <br />
+                            <button class="btn btn-primary premium-button" @onclick="Submit">Get Premium</button>
+                        </div>
+                    </div>
+
+                    <!-- Advanced Card -->
+                    <div class="card" style="max-width: 24rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Advanced Membership</h5>
+                            <p class="card-text">Explore advanced features for an additional cost</p>
+                            <button class="btn btn-primary advanced-button" @onclick="NavigateToAdvancedPage">Explore Advanced</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+    </Authorized>
+    <NotAuthorized>
+        <!-- Content for not authorized users -->
+        <div class="container h-100 d-flex justify-content-center align-items-center">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1>Register or Login to unlock exclusive features</h1>
+                    <br />
+                    <h1>Thanks for considering!</h1>
+
+                    <br />
+                    <div>
+                        <img class="card-img-top" src="/Images/R.png" alt="Card image cap" width="300" height="400">
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    private string userInput;
+    private string comment;
+    private string HomePageAfterButtonBuy = "Congrats You have Premium Cards!!";
+
+    private void Comment()
+    {
+        comment = "Incorrect Price!!";
+    }
+
+    private void NavigateToIndexPage()
+    {
+        // Navigate to the Index page with a route parameter
+        Navigation.NavigateTo($"/?value={Uri.EscapeDataString(HomePageAfterButtonBuy)}");
+    }
+
+    private void NavigateToAdvancedPage()
+    {
+        // Navigate to the Advanced page
+        Navigation.NavigateTo("/Advanced");
+    }
+
+    public void Submit()
+    {
+        string fifteenDollars = "15";
+        if (userInput == fifteenDollars)
+        {
+            NavigateToIndexPage();
+        }
+        else
+        {
+            Comment();
+        }
+    }
+}

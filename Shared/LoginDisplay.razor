@@ -1,0 +1,56 @@
+﻿<AuthorizeView>
+    <Authorized>
+        <style>
+            a {
+                color: red; /* Change the color to your preferred color */
+                text-decoration: none; /* Remove the underline */
+                transition: color 0.3s ease; /* Add a smooth color transition on hover */
+            }
+
+                a:hover {
+                    color: darkred; /* Change the color on hover */
+                }
+                .helow{
+                    margin-left:10px;
+                }
+
+            .logBtn {
+                margin-left: 10px;
+            }
+       
+        </style>
+
+        <div class="Helow">  <a href="Identity/Account/Manage">Hello, @context.User.Identity?.Name!</a> </div>
+
+        <form method="post" action="Identity/Account/Logout">
+
+            <div class="logBtn"><button type="submit" class="nav-link btn btn-link">Log out</button>  </div>
+        </form>
+    </Authorized>
+    <NotAuthorized>
+        <style>
+            /* Custom styles for the links */
+            a {
+                color: red; /* Change the color to your preferred color */
+                text-decoration: none; /* Remove the underline */
+                transition: color 0.3s ease; /* Add a smooth color transition on hover */
+            }
+
+                a:hover {
+                    color: darkred; /* Change the color on hover */
+                }
+
+            /* Add margin between Register and Log in links */
+            .a1 {
+                margin-left: 10px;
+            }
+
+            .a2 {
+                margin-left: 10px; /* You can adjust the margin for the Log in link if needed */
+            }
+        </style>
+
+        <div class="a1"><a href="Identity/Account/Register">Register</a></div>
+        <div class="a2"><a href="Identity/Account/Login">Log in</a></div>
+    </NotAuthorized>
+</AuthorizeView>

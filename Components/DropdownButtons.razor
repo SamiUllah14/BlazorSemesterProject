@@ -1,0 +1,20 @@
+﻿<div class="custom-dropdown">
+    <select @onchange="NavigateToPage" class="form-control custom-select">
+        <option value="/">More Tools</option>
+        <option value="/math">Math Expression Evaluator</option>
+        <option value="/xml">Xml to Json</option>
+        <option value="/code">Code Formatter</option>
+        <option value="/data">Send Secret Message Tool</option>
+        <option value="/option6">CGPA Counter</option>
+    </select>
+</div>
+
+@code {
+    @inject NavigationManager Navigation
+
+    private void NavigateToPage(ChangeEventArgs e)
+    {
+        string option = e.Value.ToString();
+        Navigation.NavigateTo(option);
+    }
+}

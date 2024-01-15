@@ -1,0 +1,260 @@
+﻿@page "/portfolio"
+@inject HttpClient HttpClient
+
+
+<div class="container mt-5">
+    <h1 class="text-center mb-5">Meet Our Creative Team</h1>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="/Images/Shadan.PNG" class="card-img-top" alt="Shadan">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Shadan Mansoor</h5>
+                    <p class="card-text">Web Developer <i class="fas fa-code"></i></p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-envelope"></i> Shadan.com</li>
+                        <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> Sialkot, Pakistan</li>
+                        <li class="list-group-item"><i class="fas fa-cogs"></i> C#, ASP.NET, SQL</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary mt-3 animated-button"><i class="fas fa-external-link-alt"></i> Portfolio</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="/Images/Sami.PNG"  class="card-img-top" alt="Sami">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Sami Afzal</h5>
+                    <p class="card-text">Software Engineer <i class="fas fa-paint-brush"></i></p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-envelope"></i> Sami@uskt.com</li>
+                        <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> Sialkot, Pakistan</li>
+                        <li class="list-group-item"><i class="fas fa-palette"></i> C#, ASP.NET, SQL</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary mt-3 animated-button"><i class="fas fa-external-link-alt"></i> Portfolio</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="/Images/AbdulRehman.PNG" class="card-img-top" alt="AbdulRehman">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Abdul Rehman</h5>
+                    <p class="card-text">Software Engineer <i class="fas fa-laptop-code"></i></p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><i class="fas fa-envelope"></i> Abdul@Pakistan.com</li>
+                        <li class="list-group-item"><i class="fas fa-map-marker-alt"></i> Sialkot, Pakistan</li>
+                        <li class="list-group-item"><i class="fas fa-code"></i> C#, ASP.NET, SQL</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary mt-3 animated-button"><i class="fas fa-external-link-alt"></i> Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Featured Projects</h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="/Images/android.png" class="card-img-top" alt="Sami">
+                <div class="card-body">
+                    <h5 class="card-title">Smart Stress Detection Using NLP </h5>
+                    <p class="card-text">By Using reddit data we are create this application and making to complete , till now , 50 percent has been uttered.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="/Images/facebook.jpg" class="card-img-top" alt="Sami">
+                <div class="card-body">
+                    <h5 class="card-title">Food Application for ZFC</h5>
+                    <p class="card-text">We have worked on creating food application for ZFC restaurent for Pakistan .</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="/Images/Machine.PNG" class="card-img-top" alt="Sami">
+                <div class="card-body">
+                    <h5 class="card-title">Project 3</h5>
+                    <p class="card-text">We have Participate in highly anticipated Web-site Facebook in open source ..</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Skills</h2>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h4 class="text-center">Web Development</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">HTML</li>
+                <li class="list-group-item">CSS</li>
+                <li class="list-group-item">JavaScript</li>
+            </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h4 class="text-center">Graphic Design</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Adobe Photoshop</li>
+                <li class="list-group-item">Illustrator</li>
+                <li class="list-group-item">InDesign</li>
+            </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+            <h4 class="text-center">Software Engineering</h4>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">C#</li>
+                <li class="list-group-item">ASP.NET</li>
+                <li class="list-group-item">SQL</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h2 class="text-center mb-4">Contact</h2>
+        </div>
+        <div class="col-md-6 offset-md-3">
+            <form>
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Type your message"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+            </form>
+
+
+            <br />
+
+
+            <br />
+
+            <div class="container mt-5">
+                <h3 class="mb-4">Comments from API</h3>
+
+                @if (comments == null)
+                {
+                    <p>Loading...</p>
+                }
+                else
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Description</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var comment in comments)
+                            {
+                                <tr>
+                                    <td>@comment.Id</td>
+                                    <td>@comment.Description</td>
+                                    <td>
+                                        <button class="btn btn-warning btn-sm" @onclick="() => EditComment(comment)">Edit</button>
+                                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteComment(comment.Id)">Delete</button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+
+                <!-- Form for adding a new comment -->
+                <div class="mt-4">
+                    <h3>Add a new comment</h3>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" @bind="newComment.Description" placeholder="Enter comment description" />
+                        <div class="input-group-append">
+                            <button class="btn btn-success" @onclick="AddComment">Add Comment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private List<Comments> comments;
+    private Comments newComment = new Comments();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshComments();
+    }
+
+    private async Task RefreshComments()
+    {
+        try
+        {
+            // Replace the URL with your actual API URL
+            var apiUrl = "https://localhost:7022/api/Comm";
+            comments = await HttpClient.GetFromJsonAsync<List<Comments>>(apiUrl);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error refreshing comments: {ex.Message}");
+        }
+    }
+
+    private async Task AddComment()
+    {
+        try
+        {
+            if (!string.IsNullOrWhiteSpace(newComment.Description))
+            {
+                var apiUrl = "https://localhost:7022/api/Comm/AddComment";
+                var response = await HttpClient.PostAsJsonAsync(apiUrl, newComment);
+                response.EnsureSuccessStatusCode();
+
+                // Clear the input field after adding the comment
+                newComment = new Comments();
+
+                // Refresh the comments list
+                await RefreshComments();
+            }
+        }
+        catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.BadRequest)
+        {
+            Console.WriteLine("Bad request. Make sure the input is valid.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error adding comment: {ex.Message}");
+        }
+    }
+
+    private async Task EditComment(Comments comment)
+    {
+        // Code for editing a comment
+        // Implement this method based on your requirements
+    }
+
+    private async Task DeleteComment(int id)
+    {
+        // Code for deleting a comment
+        // Implement this method based on your requirements
+    }
+}

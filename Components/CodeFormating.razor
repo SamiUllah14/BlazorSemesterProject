@@ -1,0 +1,55 @@
+﻿@page "/code"
+@using Microsoft.CodeAnalysis.CSharp.Scripting;
+@using Microsoft.CodeAnalysis.Scripting;
+
+
+
+<div class="container">
+    <h3>C# Code Formatter</h3>
+
+    <div>
+        <label for="codeInput">Enter C# Code:</label>
+        <textarea id="codeInput" @bind="code" placeholder="Type your C# code here"></textarea>
+    </div>
+
+    <button @onclick="FormatCode" class="btn btn-primary">Format Code</button>
+
+    @if (!string.IsNullOrEmpty(formattedCode))
+    {
+        <div>
+            <h4>Formatted Code:</h4>
+            <pre>@formattedCode</pre>
+        </div>
+    }
+</div>
+
+@code {
+    private string code = "";
+    private string formattedCode = "";
+
+    private async Task FormatCode()
+    {
+        try
+        {
+            // Format the C# code using Roslyn
+            formattedCode = await FormatCSharpCode(code);
+        }
+        catch (Exception ex)
+        {
+            formattedCode = $"Error formatting code: {ex.Message}";
+        }
+    }
+
+    private async Task<string> FormatCSharpCode(string inputCode)
+    {
+        // Use Roslyn scripting API for C# code formatting
+        var formatted = await CSharpScript.EvaluateAsync<string>(
+            $"@using System.Linq; {inputCode}",
+            ScriptOptions.Default
+                .WithReferences(AppDomain.CurrentDomain.GetAssemblies())
+                .WithImports("System", "System.Linq")
+        );
+
+        return formatted;
+    }
+}
